@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>MyEtherWallet.com</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.">
+  <meta name="description" content="MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( myetherwallet.com ) before unlocking your wallet.">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
@@ -50,7 +50,6 @@
       ng-cloak>
 
   <article class="block__wrap gen__1" ng-show="!wallet && !showGetAddress">
-
     <section class="block__main gen__1--inner">
       <br />
       <h1 translate="NAV_GenerateWallet" aria-live="polite">
@@ -66,7 +65,8 @@
              placeholder="{{'GEN_Placeholder_1' | translate }}"
              ng-model="password"
              ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
-             aria-label="{{'GEN_Label_1' | translate}}"/>
+             aria-label="{{'GEN_Label_1' | translate}}"
+             />
         <span tabindex="0"
               aria-label="make password visible"
               role="button"
@@ -81,6 +81,32 @@
          translate="NAV_GenerateWallet">
            Generate Wallet
       </a>
+      <article class="modal fade" id="appleMobileModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" ng-click="closeModal()" aria-label="Close Dialog">&times;</button>
+        <h2 class="modal-title" translate="APPLE_Mob_Notice_Head">
+          It seems like you're using an IPhone or an IPad.
+        </h2>
+
+        <p translate="APPLE_Mob_Notice_Body_1">
+          Just letting you know that generating wallets isn't supported in these devices because of Apple's storage restrictions.
+        </p>
+        <p translate="APPLE_Mob_Notice_Body_2">
+          Please use the website on a laptop or computer.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary col-xs-12" ng-click="closeModal()" translate="APPLE_Mob_Notice_Understand">
+          I understand.
+        </button>
+      </div>
+    </section>
+  </section>
+</article>
+
       <p translate="x_PasswordDesc"></p>
       <div class="text-center">
         <strong>
@@ -112,7 +138,7 @@
         <li>
           <p>
             <strong>
-              Ledger / TREZOR / Digital Bitbox
+              Ledger / TREZOR / Digital Bitbox / Secalot
             </strong>:
             <span translate="GEN_Help_1">
               Use your
@@ -202,7 +228,7 @@
          aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}"
          aria-describedby="x_KeystoreDesc"
          ng-click="downloaded()"
-         target="_blank" rel="noopener noreferrer">
+         rel="noopener noreferrer">
         <span translate="x_Download">
           DOWNLOAD
         </span>
@@ -290,13 +316,13 @@
       <br />
 
       <h1 translate="GEN_Label_5"> Save your Private Key</h1>
-      <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
-             value="{{wallet.getPrivateKeyString()}}"
+      <textarea aria-label="{{'x_PrivKey'|translate}}"
+             aria-describedby="{{'x_PrivKeyDesc'|translate}}"
              class="form-control"
-             type="text"
              readonly="readonly"
-             style="max-width: 50rem;margin: auto;"/>
-
+             rows="3"
+             style="max-width: 50rem;margin: auto;"
+      >{{wallet.getPrivateKeyString()}}</textarea>
       <br />
 
       <a tabindex="0"
@@ -458,7 +484,7 @@
       <div class="account-help-icon">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="x_PrintDesc">
-          ProTip: Click print and save this as a PDF, even if you do not own a printer!
+          ProTip: If you cannot print this right now, click "Print" and save it as a PDF until you are able to get it printed. Remove it from your computer afterwards!
         </p>
         <h5 translate="x_Print">
           Print Paper Wallet:
@@ -520,7 +546,6 @@
     </div>
 
   </article>
-
 </main>
 
 
@@ -546,7 +571,7 @@
 <footer>
 
 <script type='application/ld+json'>{"@context":"http://schema.org","@type":"Organization","@id":"#organization","url":"https://www.myetherwallet.com/","name":"MyEtherWallet",
-"logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png","description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( .com ) before unlocking your wallet.","sameAs":["https://www.myetherwallet.com/","https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm","https://www.facebook.com/MyEtherWallet/","https://twitter.com/myetherwallet","https://medium.com/@myetherwallet_96408","https://myetherwallet.github.io/knowledge-base/","https://github.com/kvhnuke/etherwallet","https://github.com/MyEtherWallet","https://kvhnuke.github.io/etherwallet/","https://github.com/kvhnuke/etherwallet/releases/latest","https://github.com/409H/EtherAddressLookup","https://myetherwallet.slack.com/","https://myetherwallet.herokuapp.com/","https://www.reddit.com/r/MyEtherWallet/","https://www.reddit.com/user/insomniasexx/","https://www.reddit.com/user/kvhnuke/","https://www.reddit.com/user/myetherwallet"]}</script>
+"logo":"https://myetherwallet.com/images/myetherwallet-logo-banner.png","description": "MyEtherWallet.com is a free, open-source, client-side interface for generating Ethereum wallets &amp; more. Interact with the Ethereum blockchain easily &amp; securely. Double-check the URL ( myetherwallet.com ) before unlocking your wallet.","sameAs":["https://www.myetherwallet.com/","https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm","https://www.facebook.com/MyEtherWallet/","https://twitter.com/myetherwallet","https://medium.com/@myetherwallet_96408","https://myetherwallet.github.io/knowledge-base/","https://github.com/kvhnuke/etherwallet","https://github.com/MyEtherWallet","https://kvhnuke.github.io/etherwallet/","https://github.com/kvhnuke/etherwallet/releases/latest","https://github.com/409H/EtherAddressLookup","https://myetherwallet.slack.com/","https://myetherwallet.herokuapp.com/","https://www.reddit.com/r/MyEtherWallet/","https://www.reddit.com/user/insomniasexx/","https://www.reddit.com/user/kvhnuke/","https://www.reddit.com/user/myetherwallet"]}</script>
 
 </body>
 
